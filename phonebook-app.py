@@ -15,7 +15,7 @@ app = Flask(__name__)
 # we need to configure our database. I've explained this part before. Lets have a look at these configuration. 
 app.config['MYSQL_DATABASE_HOST'] = os.getenv('MYSQL_DATABASE_HOST')
 app.config['MYSQL_DATABASE_USER'] = 'admin'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'Oliver_1'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'omercan99'
 app.config['MYSQL_DATABASE_DB'] = 'phonebook'
 app.config['MYSQL_DATABASE_PORT'] = 3306
 
