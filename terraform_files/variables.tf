@@ -3,7 +3,7 @@ variable "key_name" {
 }
 
 variable "git-token" {
-  default = "----Your GitHub Token----"           # Enter your own Token
+  default = "----Your GitHub Token----" # Enter your own Token
 }
 
 variable "git-name" {

@@ -7,7 +7,7 @@ resource "aws_db_instance" "rds_instance" {
   username               = "admin"
   password               = "omercan99"
   port                   = 3306
-  skip_final_snapshot    = true 
+  skip_final_snapshot    = true
   vpc_security_group_ids = [aws_security_group.rds_SG.id]
   tags = {
     Name = "rds_instance"
@@ -29,7 +29,7 @@ resource "aws_lb" "my_ALB" {
   name               = "my-ALB"
   load_balancer_type = "application"
   security_groups    = [aws_security_group.alb_SG.id]
-  subnets            =  data.aws_subnets.selected_subnets.ids
+  subnets            = data.aws_subnets.selected_subnets.ids
   tags = {
     Name = "my_ALB"
   }
@@ -55,7 +55,7 @@ resource "aws_lb_target_group" "ec2_TG" {
   port     = 80
   protocol = "HTTP"
   vpc_id   = data.aws_vpc.default_vpc.id
-  health_check {        
+  health_check {
     healthy_threshold   = 2
     unhealthy_threshold = 3
   }
@@ -70,7 +70,7 @@ resource "aws_launch_template" "ec2_LT" {
   instance_type          = "t2.micro"
   key_name               = var.key_name
   vpc_security_group_ids = [aws_security_group.ec2_SG.id]
-  user_data              = base64encode(templatefile("${abspath(path.module)}/userdata.sh", { db_hostname = aws_db_instance.rds_instance.address , git_token = var.git-token , git_name = var.git-name}))
+  user_data              = base64encode(templatefile("${abspath(path.module)}/userdata.sh", { db_hostname = aws_db_instance.rds_instance.address, git_token = var.git-token, git_name = var.git-name }))
   tag_specifications {
     resource_type = "instance"
     tags = {
